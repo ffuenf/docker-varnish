@@ -43,6 +43,10 @@ Docker Compose
 --------------
 See [docker-compose.yml](docker-compose.yml) for an example implementation.
 
+You may add additional vcl files in /etc/varnish/vcl.d (or your respective linked out folder)
+to be automagically included on varnish startup. Be aware that the default backend and the
+std import are already defined in default.vcl, so they have to be omitted in additional vcls.
+
 Development
 -----------
 1. Fork the repository from GitHub.
