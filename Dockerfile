@@ -12,10 +12,11 @@ RUN apt-get purge -y --auto-remove \
     && until rm -rf /var/lib/apt/lists/*; do sleep 1; done
 
 # Make our custom VCLs available on the container
-COPY default.vcl.tmpl /etc/default.vcl.tmpl
+COPY default.vcl.tmpl /etc/varnish/default.vcl.tmpl
 
 # add empty include file to allow additional vcls in vcl.d
 RUN touch /etc/varnish/.all_includes.vcl
+RUN mkdir /etc/varnish/vcl.d
 
 # Add transformation/utility script
 COPY substitute-env-vars.sh /bin/substitute-env-vars.sh
@@ -38,7 +39,7 @@ RUN chmod +x /start.sh
 # Expose volumes to be able to use data containers
 VOLUME ["/var/lib/varnish", "/etc/varnish"]
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/run.sh"]
 
 EXPOSE 6081
 EXPOSE 6082
