@@ -33,8 +33,8 @@ COPY install.sh /install.sh
 RUN chmod +x /install.sh
 RUN /install.sh
 
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
 # Expose volumes to be able to use data containers
 VOLUME ["/var/lib/varnish", "/etc/varnish"]
