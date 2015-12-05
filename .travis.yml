@@ -1,0 +1,12 @@
+sudo: required
+services:
+- docker
+script:
+- docker build -t $DOCKER_IMAGE .
+env:
+  global:
+  - TAG_PATTERN="^[0-9]+(\.[0-9]+){2}(-(alpha|beta|rc))?$"
+  - DOCKER_IMAGE=ffuenf/varnish:${TRAVIS_TAG:=$TRAVIS_BUILD_NUMBER}
+notifications:
+  slack:
+    secure: hshQ6sRHizXeAtoe4SfYZqOOSxW4ciaU3uNTrstAsHzW0gVDCmEzMZ1bBKMgl8AuR65Us8HdCxTClwaDwGaHdpGiHssgeQdPHD0fdMIaRfXGJ7wQNIHhdeUgkQ3KQPkek3CdPpbTpyQThyJ9v/GtO5Y5/rQuKQsd1gtl3pGuG0I1lAa+S6k9unUv4uKbHatI53UpmjKySHLsY2QrNCp/xN+5wkCTbTMualqXIT6Nm47uHa3s4tGLa+YvysACO/BqYzqqlYrb5VZGeDaA6IxDD/azkjFvdGpxVB/HpiK6h84o/ajqkSeXuQOAL+PUS7sFrGzAnU7wjvN/NDuuw6lK5Jvkgh+9DuqbpIMpmjFJ+ue53jpDxwwDACKNne9UItDHqYrGqc6oP5mXTnYdw1PTVape2I/E436IEEzFIQucfv73C3Bie1tunAgcgmKNu+CbNgP7qOy5GvbT1VOxEpuYUuuYv6lzzk16DwjAHraEABLFzuJHtLY7vGuu1vTdo5ld7Qe8zor1VM9Ton9mEGFIiPt+KTIGqz5Z4ymfAPboAWY67zKHzSkyfPWOY/6aHN3WCUMsq89G+w7Z+3VD9mP06Cy4rIrp5qTHr1IjCMrCULXB9BOGxb5Qjoe02Fj+l7BzY7ftf7A7E6Vpp/+6LMor/Hnrv46Yj5PdhodbuCk7X00=

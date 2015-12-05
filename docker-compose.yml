@@ -1,0 +1,18 @@
+varnish:
+  build: .
+  ports:
+    - "6081:6081"
+    - "6082:6082"
+  links:
+    - "nginx:backendhost"
+  environment:
+    VARNISH_PORT:         "6081"
+    VARNISH_ADMIN_PORT:   "6082"
+    VARNISH_BACKEND_HOST: "backendhost"
+    VARNISH_BACKEND_PORT: "8080"
+    CACHE_SIZE:           "100M"
+  volumes_from:
+    - nginx
+  volumes:
+    - ./data/varnish:/var/lib/varnish
+    - ./config/varnish:/etc/varnish
