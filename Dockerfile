@@ -6,8 +6,7 @@ ENV REFRESHED_AT 2015-12-05
 
 RUN apt-get update \
     && apt-get install -qy \
-    varnish \
-    nano
+    varnish
 
 RUN apt-get purge -y --auto-remove \
     && until rm -rf /var/lib/apt/lists/*; do sleep 1; done
