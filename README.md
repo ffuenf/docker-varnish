@@ -20,12 +20,14 @@ Container with Varnish 4.x built on top of Debian
 Environment Variables
 ---------------------
 
-* ENV VARNISH_PORT          6081
-* ENV VARNISH_ADMIN_PORT    6082
-* ENV VARNISH_BACKEND_HOST  backendhost
-* ENV VARNISH_BACKEND_PORT  8080
-* ENV CACHE_SIZE            100M
-* ENV VARNISHD_PARAMS       -p syslog_cli_traffic=off -p cli_buffer=100000 -p default_ttl=3600 -p default_grace=3600 -p feature=+esi_ignore_other_elements -p vcc_allow_inline_c=on
+* ENV VARNISH_PORT 6081
+* ENV VARNISH_ADMIN_PORT 6082
+* ENV VARNISH_SECRET YOURSECRET
+* ENV VARNISH_BACKEND_HOST backendhost
+* ENV VARNISH_BACKEND_PORT 8080
+* ENV CACHE_SIZE 100M
+* ENV INSTANCE default
+* ENV VARNISHD_PARAMS -p cli_buffer=100000 -p default_ttl=3600 -p default_grace=3600 -p feature=+esi_ignore_other_elements -p vcc_allow_inline_c=on
 
 Volumes
 -------

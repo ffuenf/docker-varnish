@@ -8,11 +8,11 @@ varnish:
   environment:
     VARNISH_PORT:         "6081"
     VARNISH_ADMIN_PORT:   "6082"
+    VARNISH_SECRET:       "YOURSECRET"
     VARNISH_BACKEND_HOST: "backendhost"
     VARNISH_BACKEND_PORT: "8080"
     CACHE_SIZE:           "100M"
-  volumes_from:
-    - nginx
+    INSTANCE:             "default"
+    VARNISHD_PARAMS:      "-p cli_buffer=100000 -p default_ttl=3600 -p default_grace=3600 -p feature=+esi_ignore_other_elements -p vcc_allow_inline_c=on"
   volumes:
-    - ./data/varnish:/var/lib/varnish
     - ./config/varnish:/etc/varnish
